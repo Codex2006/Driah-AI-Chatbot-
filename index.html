@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>DRIAH AI Chatbot </title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Driah AI - Chat Assistant</title>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header>
+
+            <div class="logo">
+
+                <h1>Driah<span class="logo-dot">.</span>AI</h1>
+
+            </div>
+
+            <div class="header-controls">
+
+                <button id="toggleDict">Dictionary</button>
+
+                <button id="darkModeToggle">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+
+                    </svg>
+
+                </button>
+
+                <button id="downloadChat">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+
+                        <polyline points="7 10 12 15 17 10"></polyline>
+
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+
+                    </svg>
+
+                </button>
+
+            </div>
+
+        </header>
+
+        <div class="chat-container">
+
+            <div class="chat-messages" id="chatMessages"></div>
+
+            
+
+            <!-- Dictionary View -->
+
+            <div class="dictionary-view" id="dictionaryView">
+
+                <div class="dict-header">
+
+                    <div class="dict-title">Driah's Knowledge</div>
+
+                    <div class="dict-close" id="closeDict">×</div>
+
+                </div>
+
+                <div id="wordsList"></div>
+
+                <div class="add-word-form">
+
+                    <h3>Teach Driah a New Word</h3>
+
+                    <div class="form-group">
+
+                        <label for="newWord">Word</label>
+
+                        <input type="text" id="newWord" class="form-control" placeholder="Enter a word">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="wordMeaning">Meaning</label>
+
+                        <textarea id="wordMeaning" class="form-control" placeholder="Enter the meaning"></textarea>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="wordExample">Example</label>
+
+                        <textarea id="wordExample" class="form-control" placeholder="Enter an example sentence"></textarea>
+
+                    </div>
+
+                    <button class="add-word-btn" id="addWordBtn">Add Word</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="chat-input-container">
+
+            <input type="text" class="chat-input" id="userInput" placeholder="Ask Driah Anything..." autocomplete="off">
+
+            <button class="send-button" id="sendButton">
+
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+
+                </svg>
+
+            </button>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
