@@ -1,257 +1,413 @@
+/* CSS Variables for theming */
 :root {
-  --primary-bg: #111;
-  --secondary-bg: #1e1e1e;
-  --text-color: #f5f5f5;
-  --accent-color: #00bcd4;
-  --accent-glow: #00bcd4aa;
-  --button-hover: #00acc1;
-  --error-color: #ff5252;
-  --success-color: #4caf50;
-  --card-radius: 12px;
+    --primary-bg: #121212;
+    --secondary-bg: #1e1e1e;
+    --primary-text: #e0e0e0;
+    --secondary-text: #a0a0a0;
+    --accent-color: #00e676;
+    --accent-glow: rgba(0, 230, 118, 0.4);
+    --user-bubble: #2d2d2d;
+    --bot-bubble: #003d29;
+    --shadow-color: rgba(0, 0, 0, 0.2);
+    --card-bg: #252525;
+    --button-hover: #00c853;
+    --danger-color: #ff5252;
+}
+
+/* Light mode variables */
+.light-theme {
+    --primary-bg: #f5f5f5;
+    --secondary-bg: #ffffff;
+    --primary-text: #212121;
+    --secondary-text: #757575;
+    --accent-color: #00c853;
+    --accent-glow: rgba(0, 200, 83, 0.3);
+    --user-bubble: #e0e0e0;
+    --bot-bubble: #c8e6c9;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --card-bg: #ffffff;
+    --button-hover: #00a045;
+    --danger-color: #f44336;
+}
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
 body {
-  margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: var(--primary-bg);
-  color: var(--text-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--primary-bg);
+    color: var(--primary-text);
+    line-height: 1.6;
+    overflow: hidden;
+    height: 100vh;
 }
 
-.chat-container {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  padding: 0.5rem;
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    max-width: 100%;
+    margin: 0 auto;
 }
 
-.chat-history {
-  flex-grow: 1;
-  overflow-y: auto;
-  padding: 1rem;
-  background-color: var(--secondary-bg);
-  border-radius: var(--card-radius);
-  margin-bottom: 1rem;
-  scroll-behavior: smooth;
+/* Header Styles */
+header {
+    background-color: var(--secondary-bg);
+    padding: 1rem;
+    box-shadow: 0 2px 10px var(--shadow-color);
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.chat-message {
-  margin-bottom: 1.2rem;
-  padding: 0.75rem 1rem;
-  border-radius: var(--card-radius);
-  max-width: 80%;
-  position: relative;
-  line-height: 1.5;
-  animation: fadeIn 0.3s ease;
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
-.user {
-  background-color: #333;
-  align-self: flex-end;
-  margin-left: auto;
-  border: 1px solid #444;
+.logo h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--accent-color);
+    text-shadow: 0 0 10px var(--accent-glow);
 }
 
-.bot {
-  background-color: #222;
-  align-self: flex-start;
-  border-left: 4px solid var(--accent-color);
-  border: 1px solid #444;
+.logo-dot {
+    color: var(--accent-color);
 }
 
-.bot::before {
-  content: "Driah: ";
-  font-weight: bold;
-  color: var(--accent-color);
+.header-controls {
+    display: flex;
+    gap: 0.5rem;
 }
 
-.input-area {
-  display: flex;
-  gap: 0.5rem;
-  padding: 0.5rem 0;
-}
-
-input[type="text"] {
-  flex-grow: 1;
-  padding: 0.75rem 1rem;
-  border: none;
-  border-radius: var(--card-radius);
-  background-color: #222;
-  color: var(--text-color);
-  font-size: 1rem;
-}
-
+/* Button Styles */
 button {
-  padding: 0.75rem 1.2rem;
-  background-color: var(--accent-color);
-  color: var(--primary-bg);
-  border: none;
-  border-radius: var(--card-radius);
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: 0 0 10px var(--accent-glow);
+    background-color: var(--accent-color);
+    color: var(--primary-bg);
+    border: none;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 0 5px var(--accent-glow);
 }
 
 button:hover {
-  background-color: var(--button-hover);
-  box-shadow: 0 0 18px var(--accent-glow);
-  transform: scale(1.03);
+    background-color: var(--button-hover);
+    box-shadow: 0 0 15px var(--accent-glow);
+    transform: translateY(-1px);
+}
+
+.icon-button {
+    background-color: transparent;
+    color: var(--accent-color);
+    box-shadow: none;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-button:hover {
+    background-color: rgba(0, 230, 118, 0.1);
+    box-shadow: none;
+}
+
+/* Main Chat Area */
+.chat-container {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    scroll-behavior: smooth;
+    margin-bottom: 80px; /* Added to prevent overlap with input area */
+}
+
+/* Chat Bubbles */
+.message {
+    max-width: 85%;
+    padding: 0.8rem 1rem;
+    border-radius: 18px;
+    position: relative;
+    animation: fadeIn 0.3s ease-out;
+    line-height: 1.4;
+    word-wrap: break-word;
+}
+
+.message-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.user-message {
+    align-self: flex-end;
+    background-color: var(--user-bubble);
+    border-bottom-right-radius: 4px;
+    margin-left: auto;
+}
+
+.bot-message {
+    align-self: flex-start;
+    background-color: var(--bot-bubble);
+    border-bottom-left-radius: 4px;
 }
 
 .message-actions {
-  text-align: right;
-  font-size: 0.85rem;
-  color: #888;
-  margin-top: 0.3rem;
-  cursor: pointer;
+    position: absolute;
+    top: -18px;
+    right: 0;
+    opacity: 0;
+    transition: opacity 0.2s;
+    display: flex;
+    gap: 0.25rem;
 }
 
-.message-actions:hover {
-  color: var(--error-color);
+.message-container:hover .message-actions {
+    opacity: 1;
 }
 
-/* Dictionary Section */
-#dictionary-section {
-  margin-top: 2rem;
-  padding: 1rem;
-  background-color: var(--secondary-bg);
-  border-radius: var(--card-radius);
-  box-shadow: 0 0 8px #000;
-}
-
-#dictionary-section h2 {
-  margin-bottom: 1rem;
-  color: var(--accent-color);
-  font-size: 1.5rem;
-  text-align: center;
-}
-
-#dictionary-section input,
-#dictionary-section textarea {
-  width: 100%;
-  padding: 0.75rem 1rem;
-  margin: 0.4rem 0;
-  background-color: #222;
-  color: var(--text-color);
-  border: 1px solid #333;
-  border-radius: var(--card-radius);
-  font-size: 0.95rem;
-}
-
-.word-list {
-  margin-top: 1rem;
-  max-height: 200px;
-  overflow-y: auto;
-  background-color: #181818;
-  border: 1px solid #333;
-  border-radius: var(--card-radius);
-  padding: 0.5rem 1rem;
-}
-
-.word-item {
-  margin: 0.5rem 0;
-  padding: 0.5rem;
-  border-bottom: 1px solid #333;
-}
-
-.word-item strong {
-  color: var(--accent-color);
-}
-
-.word-item p {
-  margin: 0.25rem 0;
-  font-size: 0.9rem;
-}
-
-/* Updated Add Word Button */
-.add-word-btn {
-  width: 100%;
-  margin-top: 0.5rem;
-  background-color: var(--accent-color);
-  color: var(--primary-bg);
-  border: none;
-  border-radius: 4px;
-  padding: 0.6rem 1rem;
-  font-size: 0.95rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: 0 0 6px var(--accent-glow);
-}
-
-.add-word-btn:hover {
-  background-color: var(--button-hover);
-  box-shadow: 0 0 15px var(--accent-glow);
-  transform: translateY(-1px);
-}
-
-/* Dark Mode Toggle */
-.toggle-container {
-  display: flex;
-  justify-content: flex-end;
-  padding: 0.5rem 1rem;
-}
-
-#darkModeToggle {
-  cursor: pointer;
-  font-size: 1rem;
-  color: var(--accent-color);
-  background: transparent;
-  border: none;
-}
-
-/* Word List Toggle Button */
-#toggleWordListBtn {
-  display: block;
-  margin: 0.5rem auto;
-  background-color: transparent;
-  border: 1px solid var(--accent-color);
-  color: var(--accent-color);
-  padding: 0.4rem 0.8rem;
-  border-radius: var(--card-radius);
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-#toggleWordListBtn:hover {
-  background-color: var(--accent-color);
-  color: var(--primary-bg);
-  box-shadow: 0 0 10px var(--accent-glow);
+.delete-msg {
+    background-color: var(--danger-color);
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(255, 82, 82, 0.4);
 }
 
 /* Typing Animation */
-.typing {
-  display: inline-block;
-  overflow: hidden;
-  white-space: nowrap;
-  animation: typing 2s steps(30, end), blink 0.75s step-end infinite;
-  border-right: 2px solid var(--accent-color);
+.typing-indicator {
+    display: flex;
+    padding: 0.8rem 1rem;
+    background-color: var(--bot-bubble);
+    border-radius: 18px;
+    border-bottom-left-radius: 4px;
+    max-width: 85%;
+    margin-right: auto;
+    align-self: flex-start;
 }
 
-@keyframes typing {
-  from { width: 0; }
-  to { width: 100%; }
+.typing-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--primary-text);
+    border-radius: 50%;
+    margin: 0 2px;
+    opacity: 0.7;
 }
 
-@keyframes blink {
-  0%, 100% { border-color: transparent; }
-  50% { border-color: var(--accent-color); }
+.typing-dot:nth-child(1) {
+    animation: typingAnimation 1s infinite 0s;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(5px); }
-  to { opacity: 1; transform: translateY(0); }
+.typing-dot:nth-child(2) {
+    animation: typingAnimation 1s infinite 0.2s;
 }
 
-/* Scrollbar Styling */
-::-webkit-scrollbar {
-  width: 6px;
+.typing-dot:nth-child(3) {
+    animation: typingAnimation 1s infinite 0.4s;
 }
-::-webkit-scrollbar-track {
-  background: #1e1e1e;
-}
-::-webkit-scrollbar-thumb {
-  background-color: var(--accent-color);
-  border-radius: 10px;
+
+@keyframes typingAnimation {
+    0% {
+        transform: translateY(0);
     }
+    50% {
+        transform: translateY(-5px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Chat Input Area */
+.chat-input-container {
+    display: flex;
+    padding: 1rem;
+    background-color: var(--secondary-bg);
+    box-shadow: 0 -2px 10px var(--shadow-color);
+    z-index: 2;
+    position: fixed;  /* Added to keep input visible */
+    bottom: 0;        /* Stick to the bottom */
+    left: 0;
+    width: 100%;
+}
+
+.chat-input {
+    flex: 1;
+    padding: 0.8rem 1rem;
+    border-radius: 24px;
+    border: 1px solid var(--secondary-text);
+    background-color: var(--card-bg);
+    color: var(--primary-text);
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.chat-input:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px var(--accent-glow);
+}
+
+.send-button {
+    margin-left: 0.5rem;
+    border-radius: 50%;
+    width: 46px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Word Dictionary View */
+.dictionary-view {
+    position: absolute;
+    top: 0;
+    right: -300px;
+    width: 300px;
+    height: 100%;
+    background-color: var(--secondary-bg);
+    box-shadow: -2px 0 10px var(--shadow-color);
+    transition: right 0.3s ease;
+    overflow-y: auto;
+    z-index: 100;
+    padding: 1rem;
+}
+
+.dictionary-view.active {
+    right: 0;
+}
+
+.dict-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--secondary-text);
+}
+
+.dict-title {
+    font-size: 1.2rem;
+    color: var(--accent-color);
+}
+
+.dict-close {
+    cursor: pointer;
+    color: var(--secondary-text);
+}
+
+.word-item {
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    background-color: var(--card-bg);
+    border-radius: 4px;
+    border-left: 3px solid var(--accent-color);
+}
+
+.word-item h4 {
+    margin-bottom: 0.25rem;
+    color: var(--accent-color);
+}
+
+.word-item p {
+    font-size: 0.9rem;
+    color: var(--secondary-text);
+}
+
+/* New Word Form */
+.add-word-form {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: var(--card-bg);
+    border-radius: 8px;
+}
+
+.form-group {
+    margin-bottom: 0.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.25rem;
+    color: var(--secondary-text);
+    font-size: 0.9rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid var(--secondary-text);
+    background-color: var(--card-bg);
+    color: var(--primary-text);
+}
+
+.add-word-btn {
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+    .message {
+        max-width: 90%;
+    }
+
+    .header-controls {
+        gap: 0.25rem;
+    }
+
+    button {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+
+    .logo h1 {
+        font-size: 1.3rem;
+    }
+
+    .dictionary-view {
+        width: 100%;
+        right: -100%;
+    }
+}
